@@ -1,70 +1,94 @@
-// Name this file index.js and zip it + the node_modules then upload to AWS Lambda
-var aws = require('aws-sdk');
-var s3 = new aws.S3({apiVersion: '2006-03-01'});
-var jimp = require('jimp');
+// dependencies
+var async = require('async');
+var AWS = require('aws-sdk');
+var gm = require('gm').subClass({ imageMagick: true });
+var util = require('util');
 
-// Rotate an image given a buffer
-var resizeImage = function(data, callback) {
-    jimp.read(data.buffer).then(function(image) {
-        console.log(data.buffer)
-        console.log('image:::' + image);
 
-            console.log('got to image reduction quality');
-            console.log(image)
-            image.quality(60);
-            image.getBuffer(jimp.AUTO);
-            return callback(null, image);
+// get reference to S3 client
+var s3 = new AWS.S3();
 
-    }).catch(function(err) {
-        console.log('An error occurred when reading the file: ' + err.message);
-        return callback(err, null);
-    })
-};
+exports.handler = function(event, context) {
+    // Read options from the event.
+    console.log("Reading options from event:\n", util.inspect(event, {depth: 5}));
+    var srcBucket = event.Records[0].s3.bucket.name;
+    var srcKey = event.Records[0].s3.object.key;
 
 
 
-// AWS Lambda runs this on every new file upload to s3
-exports.handler = function(event, context, callback) {
+    console.log(srcBucket);
+    console.log(srcKey);
 
-    console.log('Received event:', JSON.stringify(event, null, 2));
-    // Get the object from the event and show its content type
-    var bucket = event.Records[0].s3.bucket.name;
-    console.log(bucket)
-    var key = event.Records[0].s3.object.key;
+    // Infer the image type.
+    var typeMatch = srcKey.match(/\.([^.]*)$/);
+    if (!typeMatch) {
+        console.error('unable to infer image type for key ' + srcKey);
+        return;
+    }
+    var imageType = typeMatch[1];
+    if (imageType != "jpg" && imageType != "png") {
+        console.log('skipping non-image ' + srcKey);
+        return;
+    }
 
-    console.log(key);
-    s3.getObject({Bucket: bucket, Key: key}, function(err, data) {
-        if (err) {
-            console.log("Error getting object " + key + " from bucket " + bucket +
-                ". Make sure they exist and your bucket is in the same region as this function.");
-            callback("Error getting file: " + err, null);
-        } else {
-        console.log(data)
-            // log the content type, should be an image
-            console.log('CONTENT TYPE:', data.ContentType);
-            // rotate the image
+    // Download the image from S3, transform, and upload to same S3 bucket but different folders.
+    async.waterfall([
+            function download(next) {
+                // Download the image from S3 into a buffer.
+
+                s3.getObject({
+                        Bucket: srcBucket,
+                        Key: srcKey
+                    },
+                    next);
+            },
+
+            function transform(response, next) {
+        
+
+                    // Transform the image buffer in memory.
+                    gm(response.Body, srcKey)
+                        .quality(50)
+                        .toBuffer(imageType, function(err, buffer) {
+                            if (err) {
+                                next(err);
+
+                            } else {
+                                next(null, response.ContentType, buffer);
+                            }
+                        });
+
+            },
+
+            function upload(contentType, data, next) {
 
 
-            resizeImage(data.Body, function(error, image) {
-                console.log('data body:'+ data.Body);
+                    // Stream the transformed image to a different folder.
+                    s3.putObject({
+                            Bucket: 'bookstackreducequalityphotos',
+                            Key: srcKey,
+                            Body: data,
+                            ContentType: contentType
+                        },
+                        next);
 
-                const params = {
-                    Bucket: 'bookstackreducedqualityphotos',
-                    Key:  key,
-                    Body: image
-                };
+            }
 
-                // Upload new image, careful not to upload it in a path that will trigger the function again!
-                s3.putObject(params, function (err, data) {
-                    if (err) {
-                        callback("Error uploading rotated image: " + err, null);
-                    } else {
-                        console.log("Successfully uploaded image on S3", data);
-                        // call AWS Lambda's callback, function was successful!!!
-                        callback(null, data);
-                    }
-                });
-            });
+        ], function (err) {
+            if (err) {
+                console.error(
+                    '---->Unable to resize ' + srcBucket + '/' + srcKey +
+                    ' and upload to ' + srcBucket + '/dst' +
+                    ' due to an error: ' + err
+                );
+            } else {
+                console.log(
+                    '---->Successfully resized ' + srcBucket +
+                    ' and uploaded to' + srcBucket + "/dst"
+                );
+            }
+
+            context.done();
         }
-    });
+    );
 };
