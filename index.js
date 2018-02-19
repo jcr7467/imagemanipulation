@@ -1,63 +1,86 @@
 // dependencies
-var async = require('async');
+let async = require('async'),
+    AWS = require('aws-sdk'),
+    jimp = require('jimp');
 
-//var gm = require('gm').subClass({ imageMagick: true });
-var util = require('util');
-
-let isBuffer = require('is-buffer');
-
-
-var AWS = require('aws-sdk');
-var jimp = require('jimp')
 // get reference to S3 client
-var s3 = new AWS.S3();
-
+let s3 = new AWS.S3();
 
 
 // AWS Lambda runs this on every new file upload to s3
 exports.handler = function(event, context, callback) {
     console.log('Received event:', JSON.stringify(event, null, 2));
     // Get the object from the event and show its content type
-    var bucket = event.Records[0].s3.bucket.name;
-    var key = event.Records[0].s3.object.key;
-    s3.getObject({Bucket: bucket, Key: key}, function(err, data) {
-        if (err) {
-            console.log("Error getting object " + key + " from bucket " + bucket +
-                ". Make sure they exist and your bucket is in the same region as this function.");
-            callback("Error getting file: " + err, null);
-        } else {
+    const srcBucket = event.Records[0].s3.bucket.name;
+    const srcKey = event.Records[0].s3.object.key;
 
-            // log the content type, should be an image
-            console.log('CONTENT TYPE:', data.ContentType);
-            console.log(data.Body)
+    // Infer the image type.
+    let typeMatch = srcKey.match(/\.([^.]*)$/);
+    if (!typeMatch) {
+        console.error('unable to infer image type for key ' + srcKey);
+        return;
+    }
+    let imageType = typeMatch[1].toLowerCase();
+    if (imageType !== "jpg" && imageType !== "png") {
+        console.log('skipping non-image ' + srcKey);
+        return;
+    }
 
-            jimp.read(data.Body).then(function (image) {
-                // do stuff with the image
-                image.quality(40).getBuffer(jimp.AUTO, function(err, buffer){
-                    console.log('i got into read')
-                    if(err){console.log(err)}
-                    else{
-                        const params = {
-                            Bucket: 'bookstackreducequalityphotos',
-                            Key:  key,
-                            Body: buffer
-                        };
-                        // Upload new image, careful not to upload it in a path that will trigger the function again!
-                        s3.putObject(params, function (err, data) {
-                            if (err) {
-                                callback("Error uploading image: " + err, null);
-                            } else {
-                                console.log("Successfully uploaded image on S3", data);
-                                // call AWS Lambda's callback, function was successful!!!
-                                callback(null, data);
-                            }
-                        });
+    async.waterfall([
+        function download(next){
+        console.log('got to download');
+        //Download s3 picture into buffer
+            s3.getObject({Bucket:srcBucket, Key: srcKey}, (err, data) => {
+                console.log('got to s3get');
+                if(err){next('Error getting file: ' + err, null);}
 
-                    }
-                })
+                next(null, data);
+            })
+        },
+        function manipulate(data, next){
+            console.log('got to manipulate');
+        //This is where image is rotated and quality is reduced
+            jimp.read(data.Body).then((image) => {
+                console.log('got to jimpread');
+                image.quality(45)
+                     .exifRotate()
+                     .getBuffer(jimp.AUTO,(err, buffer) => {
+                        if(err){next(err, null);}
+                        else{
+                            next(null, data.ContentType, buffer);
+                        }
+                     })
             }).catch(function (err) {
-                console.log(err)
+                next(err, null)
+            });
+        },
+        function upload(contentType, buffer, next){
+            console.log('got to upload');
+        //Finally, the file is saved and uploaded to a bucket
+            const params = {
+                Bucket: 'bookstackreducequalityphotos',
+                Key:  srcKey,
+                Body: buffer,
+                ContentType:contentType
+            };
+
+
+            s3.putObject(params, function (err, data) {
+                console.log('got to put');
+                if (err) {
+                    next("Error uploading image: " + err, null);
+                } else {
+                    console.log("Successfully uploaded image on S3", data);
+                    // call AWS Lambda's callback, function was successful!!!
+                    next(null);
+                }
             });
         }
+    ], (err) => {
+        if(err){callback(err)}
+        else{
+            callback(null, 'Operation was successful!!')
+        }
+
     });
 };

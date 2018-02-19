@@ -3,7 +3,105 @@
   <component name="ChangeListManager">
     <list default="true" id="77331ba7-d7c1-4490-a3c0-7305db95ed89" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Archive.zip" afterPath="$PROJECT_DIR$/Archive.zip" />
       <change beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.bin/which" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-parallel/.npmignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-parallel/.travis.yml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-parallel/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-parallel/component.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-parallel/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-parallel/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-parallel/test.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-series/.npmignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-series/.travis.yml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-series/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-series/component.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-series/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-series/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-series/test.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cross-spawn/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cross-spawn/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cross-spawn/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cross-spawn/lib/enoent.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cross-spawn/lib/hasBrokenSpawn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cross-spawn/lib/parse.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cross-spawn/lib/resolveCommand.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cross-spawn/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/.coveralls.yml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/.eslintrc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/.npmignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/.travis.yml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/CHANGELOG.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/Makefile" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/karma.conf.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/node.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/src/browser.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/src/debug.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/src/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/src/node.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/.npmignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/.travis.yml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/History.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/Makefile" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/lib/args.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/lib/command.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/lib/compare.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/lib/composite.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/lib/convenience.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/lib/convenience/autoOrient.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/lib/convenience/morph.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/lib/convenience/sepia.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/lib/convenience/thumb.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/lib/drawing.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/lib/getters.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/lib/montage.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/lib/options.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/lib/utils.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/gm/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/is-buffer/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/is-buffer/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/is-buffer/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/is-buffer/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/is-buffer/test/basic.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/isexe/.npmignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/isexe/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/isexe/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/isexe/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/isexe/mode.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/isexe/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/isexe/test/basic.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/isexe/windows.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/lru-cache/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/lru-cache/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/lru-cache/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/lru-cache/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ms/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ms/license.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ms/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ms/readme.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/pseudomap/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/pseudomap/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/pseudomap/map.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/pseudomap/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/pseudomap/pseudomap.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/pseudomap/test/basic.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/which/CHANGELOG.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/which/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/which/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/which/bin/which" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/which/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/which/which.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/yallist/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/yallist/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/yallist/iterator.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/yallist/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/node_modules/yallist/yallist.js" afterPath="" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
       <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
@@ -22,8 +120,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+            <state relative-caret-position="392">
+              <caret line="19" column="70" lean-forward="true" selection-start-line="19" selection-start-column="70" selection-end-line="19" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -52,6 +150,8 @@
       <find>jimp</find>
       <find>i got into the read prmise</find>
       <find>};};</find>
+      <find>context</find>
+      <find>callback</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -60,6 +160,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/index.js" />
       </list>
     </option>
@@ -153,12 +254,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1519025271777</updated>
-      <workItem from="1519025274331" duration="10672000" />
+      <workItem from="1519025274331" duration="13776000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10672000" />
+    <option name="totallyTimeSpent" value="13776000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
@@ -172,7 +273,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.029411765" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28516623" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -219,10 +320,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+        <state relative-caret-position="392">
+          <caret line="19" column="70" lean-forward="true" selection-start-line="19" selection-start-column="70" selection-end-line="19" selection-end-column="70" />
           <folding />
         </state>
       </provider>
