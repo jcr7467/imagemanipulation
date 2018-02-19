@@ -28,20 +28,19 @@ exports.handler = function(event, context, callback) {
 
     async.waterfall([
         function download(next){
-        console.log('got to download');
         //Download s3 picture into buffer
             s3.getObject({Bucket:srcBucket, Key: srcKey}, (err, data) => {
-                console.log('got to s3get');
+
                 if(err){next('Error getting file: ' + err, null);}
 
                 next(null, data);
             })
         },
         function manipulate(data, next){
-            console.log('got to manipulate');
+
         //This is where image is rotated and quality is reduced
             jimp.read(data.Body).then((image) => {
-                console.log('got to jimpread');
+
                 image.quality(45)
                      .exifRotate()
                      .getBuffer(jimp.AUTO,(err, buffer) => {
@@ -55,10 +54,9 @@ exports.handler = function(event, context, callback) {
             });
         },
         function upload(contentType, buffer, next){
-            console.log('got to upload');
         //Finally, the file is saved and uploaded to a bucket
             const params = {
-                Bucket: 'bookstackreducequalityphotos',
+                Bucket: 'bookstackrotatedphotos',
                 Key:  srcKey,
                 Body: buffer,
                 ContentType:contentType
@@ -66,7 +64,6 @@ exports.handler = function(event, context, callback) {
 
 
             s3.putObject(params, function (err, data) {
-                console.log('got to put');
                 if (err) {
                     next("Error uploading image: " + err, null);
                 } else {
